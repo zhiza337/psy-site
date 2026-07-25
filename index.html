@@ -1,0 +1,554 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Дарья Астанкова — психолог, психоаналитическое консультирование онлайн</title>
+<meta name="description" content="Онлайн-консультации психолога в психоаналитическом подходе. Бережно, конфиденциально, глубоко.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Manrope:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --olive-950:#2f3724;
+    --olive-800:#435030;
+    --olive-600:#68764a;
+    --olive-400:#96a273;
+    --olive-200:#ccd3ae;
+    --olive-100:#e2e6cd;
+    --cream:#f2efe1;
+    --paper:#faf8ee;
+    --ink:#2c3123;
+    --ink-soft:#5d6350;
+    --radius:26px;
+    --shadow:0 20px 50px -22px rgba(47,55,36,.28);
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    font-family:'Manrope',sans-serif;
+    color:var(--ink);
+    background:var(--cream);
+    line-height:1.65;
+    overflow-x:hidden;
+  }
+  h1,h2,h3,.serif{font-family:'Cormorant Garamond',serif;font-weight:500}
+  em{font-style:italic}
+
+  /* мягкий перетекающий фон */
+  .bg{position:fixed;inset:0;z-index:-1;background:linear-gradient(165deg,#f2efe1 0%,#ecebdb 50%,#e9e8d3 100%)}
+  .bg::before,.bg::after{
+    content:"";position:absolute;border-radius:50%;opacity:.5;will-change:transform;
+    animation:float 30s ease-in-out infinite alternate;
+  }
+  .bg::before{
+    width:58vmax;height:58vmax;top:-24vmax;right:-18vmax;
+    background:radial-gradient(circle,#d4dab6 0%,rgba(212,218,182,.35) 45%,transparent 70%);
+  }
+  .bg::after{
+    width:52vmax;height:52vmax;bottom:-22vmax;left:-16vmax;
+    background:radial-gradient(circle,#e7e0c6 0%,rgba(231,224,198,.35) 45%,transparent 70%);
+    animation-delay:-15s;
+  }
+  @keyframes float{from{transform:translate(0,0) scale(1)}to{transform:translate(-5vmax,4vmax) scale(1.12)}}
+
+  .wrap{max-width:1100px;margin:0 auto;padding:0 22px}
+
+  /* ---------- навигация ---------- */
+  nav{
+    position:sticky;top:0;z-index:50;
+    backdrop-filter:blur(14px);
+    background:rgba(242,239,225,.82);
+    border-bottom:1px solid rgba(67,80,48,.12);
+  }
+  .nav-inner{display:flex;align-items:center;justify-content:space-between;padding:15px 22px;max-width:1100px;margin:0 auto}
+  .logo{font-family:'Cormorant Garamond',serif;font-size:1.4rem;color:var(--olive-950);text-decoration:none;letter-spacing:.02em}
+  .logo em{color:var(--olive-600)}
+  .nav-links{display:flex;gap:26px;list-style:none;flex-wrap:wrap}
+  .nav-links a{text-decoration:none;color:var(--ink-soft);font-size:.85rem;font-weight:500;transition:color .25s}
+  .nav-links a:hover{color:var(--olive-800)}
+  .nav-cta{
+    font-size:.8rem;font-weight:600;text-decoration:none;color:var(--olive-950);
+    border:1px solid rgba(67,80,48,.4);border-radius:100px;padding:9px 20px;transition:all .3s;
+  }
+  .nav-cta:hover{background:var(--olive-950);color:var(--paper)}
+  @media(max-width:860px){.nav-links{display:none}}
+
+  /* ---------- hero ---------- */
+  .hero{padding:26px 0 60px}
+  .hero-panel{
+    position:relative;border-radius:36px;overflow:hidden;
+    background:
+      linear-gradient(180deg,rgba(47,55,36,.5) 0%,rgba(47,55,36,.28) 45%,rgba(47,55,36,.62) 100%),
+      url("assets/bg/hills.jpg") center 65%/cover no-repeat,
+      linear-gradient(160deg,#8b9768 0%,#68764a 55%,#4c592f 100%);
+    box-shadow:var(--shadow);
+    padding:110px 40px 130px;text-align:center;color:var(--paper);
+  }
+  .hero-panel h1,.hero-panel .hero-sub{text-shadow:0 2px 24px rgba(47,55,36,.45)}
+  .hero-pill{
+    display:inline-block;font-size:.74rem;font-weight:600;letter-spacing:.2em;text-transform:uppercase;
+    color:var(--paper);border:1px solid rgba(250,248,238,.4);border-radius:100px;
+    padding:9px 20px;margin-bottom:30px;background:rgba(47,55,36,.18);backdrop-filter:blur(4px);
+  }
+  h1{font-size:clamp(2.6rem,6.5vw,4.6rem);line-height:1.06;font-weight:500;margin-bottom:22px}
+  h1 em{font-weight:400}
+  .hero-sub{max-width:540px;margin:0 auto 40px;color:rgba(250,248,238,.85);font-size:1.04rem;font-weight:300}
+  .btn{
+    display:inline-block;text-decoration:none;font-weight:600;font-size:.93rem;
+    padding:16px 36px;border-radius:100px;transition:all .3s;letter-spacing:.02em;
+  }
+  .btn-light{background:var(--paper);color:var(--olive-950)}
+  .btn-light:hover{transform:translateY(-2px);box-shadow:0 14px 34px -12px rgba(0,0,0,.4)}
+  .btn-outline{color:var(--paper);border:1px solid rgba(250,248,238,.5);margin-left:12px}
+  .btn-outline:hover{background:rgba(250,248,238,.14)}
+  /* декоративные «камешки» */
+  .pebbles{position:absolute;left:50%;bottom:-14px;transform:translateX(-50%);display:flex;align-items:flex-end;gap:6px;opacity:.9}
+  .pebbles span{display:block;background:var(--olive-200);border-radius:50%}
+  .pebbles span:nth-child(1){width:54px;height:26px}
+  .pebbles span:nth-child(2){width:40px;height:40px;background:var(--olive-100)}
+  .pebbles span:nth-child(3){width:64px;height:30px}
+  @media(max-width:640px){.hero-panel{padding:80px 24px 100px}.btn-outline{margin:14px 0 0}}
+
+  /* ---------- секции ---------- */
+  section{padding:76px 0}
+  .sec-head{text-align:center;margin-bottom:46px}
+  .sec-label{
+    font-size:.72rem;font-weight:700;letter-spacing:.24em;text-transform:uppercase;
+    color:var(--olive-600);margin-bottom:14px;
+  }
+  h2{font-size:clamp(2rem,4.4vw,3rem);color:var(--olive-950);line-height:1.12;font-weight:500}
+  h2 em{color:var(--olive-600)}
+  .reveal{opacity:0;transform:translateY(26px);transition:opacity .8s ease,transform .8s ease}
+  .reveal.on{opacity:1;transform:none}
+
+  /* ---------- обо мне ---------- */
+  .about{display:grid;grid-template-columns:410px 1fr;gap:0;align-items:center}
+  @media(max-width:880px){.about{grid-template-columns:1fr}}
+  .portrait{
+    position:relative;overflow:hidden;aspect-ratio:4/5;
+    width:100%;max-width:100%;align-self:center;
+    border-radius:200px 200px var(--radius) var(--radius);
+    background:linear-gradient(165deg,var(--olive-400),var(--olive-800));
+    box-shadow:var(--shadow);z-index:2;
+  }
+  .portrait img{width:100%;height:100%;object-fit:cover;object-position:center 22%;display:block;position:relative;z-index:1}
+  @media(max-width:880px){.portrait{width:min(300px,80%);margin:0 auto}}
+  .portrait .placeholder{
+    position:absolute;inset:0;display:flex;flex-direction:column;gap:10px;
+    align-items:center;justify-content:center;color:var(--paper);text-align:center;padding:24px;
+  }
+  .placeholder .mono{font-family:'Cormorant Garamond',serif;font-size:4rem;line-height:1}
+  .placeholder small{opacity:.75;font-size:.78rem;max-width:200px}
+  .about-plate{
+    background:var(--olive-800);color:var(--paper);border-radius:var(--radius);
+    padding:56px 54px 56px 116px;margin:36px 0 36px -60px;box-shadow:var(--shadow);
+    display:flex;flex-direction:column;justify-content:center;
+    position:relative;z-index:1;
+  }
+  @media(max-width:880px){.about-plate{margin:-48px 0 0;padding:76px 28px 40px}}
+  .about-plate .sec-label{color:var(--olive-200)}
+  .about-plate h2{color:var(--paper);font-size:clamp(1.7rem,3.4vw,2.4rem);margin-bottom:20px}
+  .about-plate h2 em{color:var(--olive-200)}
+  .about-plate p{color:rgba(250,248,238,.82);font-weight:300;font-size:.98rem;margin-bottom:14px}
+  .about-plate strong{color:var(--paper);font-weight:600}
+
+  /* ---------- с чем приходят ---------- */
+  .themes{max-width:860px;margin:0 auto}
+  .theme-row{
+    display:grid;grid-template-columns:70px 1fr;align-items:center;gap:20px;
+    padding:24px 26px;border-bottom:1px solid rgba(67,80,48,.16);
+    border-radius:16px;transition:background .35s,color .35s,transform .35s;
+  }
+  .theme-row:first-child{border-top:1px solid rgba(67,80,48,.16)}
+  .theme-row .num{
+    font-family:'Cormorant Garamond',serif;font-style:italic;font-size:1.5rem;
+    color:var(--olive-400);transition:color .35s;
+  }
+  .theme-row p{font-family:'Cormorant Garamond',serif;font-size:clamp(1.15rem,2.4vw,1.5rem);line-height:1.35;color:var(--ink)}
+  .theme-row:hover{background:var(--olive-800);transform:translateX(6px)}
+  .theme-row:hover p{color:var(--paper)}
+  .theme-row:hover .num{color:var(--olive-200)}
+  .themes-note{text-align:center;margin-top:30px;color:var(--ink-soft);font-size:.9rem;font-weight:300}
+  @media(max-width:560px){.theme-row{grid-template-columns:44px 1fr;padding:20px 14px}}
+
+  /* ---------- интерактив ---------- */
+  .interactive{
+    background:
+      linear-gradient(180deg,rgba(37,44,29,.82) 0%,rgba(37,44,29,.68) 50%,rgba(37,44,29,.85) 100%),
+      url("assets/bg/boat.jpg") center/cover no-repeat,
+      linear-gradient(155deg,var(--olive-950),var(--olive-800));
+    border-radius:36px;padding:70px 40px;text-align:center;color:var(--paper);
+    box-shadow:var(--shadow);position:relative;overflow:hidden;
+  }
+  .interactive .sec-label{color:var(--olive-200)}
+  .interactive h2{color:var(--paper)}
+  .interactive p.lead{color:rgba(250,248,238,.75);max-width:520px;margin:18px auto 36px;font-weight:300}
+  .q-card{
+    max-width:580px;margin:0 auto 32px;background:rgba(250,248,238,.08);
+    border:1px solid rgba(250,248,238,.22);border-radius:var(--radius);
+    padding:46px 38px;min-height:150px;display:grid;place-items:center;
+  }
+  .q-card p{
+    font-family:'Cormorant Garamond',serif;font-size:clamp(1.25rem,2.6vw,1.65rem);
+    font-style:italic;line-height:1.4;transition:opacity .35s;
+  }
+  .interactive small{display:block;margin-top:24px;color:rgba(250,248,238,.5);font-size:.8rem;font-weight:300}
+  @media(max-width:640px){.interactive{padding:56px 22px}}
+
+  /* ---------- образование ---------- */
+  .timeline{
+    display:grid;grid-template-columns:repeat(4,1fr);gap:0;margin-bottom:60px;
+    position:relative;
+  }
+  .timeline::before{
+    content:"";position:absolute;top:7px;left:0;right:0;height:1px;
+    background:linear-gradient(90deg,transparent,var(--olive-400) 8%,var(--olive-400) 92%,transparent);
+  }
+  .tl-item{padding:34px 22px 0 0;position:relative}
+  .tl-item::before{
+    content:"";position:absolute;top:0;left:0;width:15px;height:15px;border-radius:50%;
+    background:var(--olive-200);border:2px solid var(--olive-600);
+  }
+  .tl-item .year{
+    font-family:'Cormorant Garamond',serif;font-style:italic;font-size:1.35rem;
+    color:var(--olive-600);display:block;margin-bottom:8px;
+  }
+  .tl-item h3{font-size:1.02rem;font-family:'Manrope',sans-serif;font-weight:600;color:var(--olive-950);margin-bottom:6px;line-height:1.4}
+  .tl-item p{font-size:.85rem;color:var(--ink-soft);font-weight:300}
+  @media(max-width:820px){
+    .timeline{grid-template-columns:1fr;gap:8px}
+    .timeline::before{top:0;bottom:0;left:7px;right:auto;width:1px;height:auto;
+      background:linear-gradient(180deg,transparent,var(--olive-400) 8%,var(--olive-400) 92%,transparent)}
+    .tl-item{padding:0 0 26px 34px}
+  }
+  .edu-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(235px,1fr));gap:22px}
+  .edu-card{
+    background:var(--paper);border:1px solid rgba(67,80,48,.12);border-radius:var(--radius);
+    overflow:hidden;text-decoration:none;color:inherit;display:flex;flex-direction:column;
+    transition:transform .3s,box-shadow .3s;
+  }
+  .edu-card:hover{transform:translateY(-5px);box-shadow:var(--shadow)}
+  .edu-card .thumb{aspect-ratio:4/3;overflow:hidden;background:var(--olive-100)}
+  .edu-card .thumb img{width:100%;height:100%;object-fit:cover;object-position:top;display:block}
+  .edu-card .meta{padding:18px 20px 22px}
+  .edu-card .meta h3{font-size:1.15rem;color:var(--olive-950);margin-bottom:6px;line-height:1.3}
+  .edu-card .meta p{font-size:.8rem;color:var(--ink-soft);font-weight:300}
+  .edu-card .meta .open{display:inline-block;margin-top:10px;font-size:.76rem;font-weight:600;color:var(--olive-600)}
+
+  /* ---------- консультации ---------- */
+  .price-grid{display:grid;grid-template-columns:1fr 1fr;gap:26px}
+  @media(max-width:760px){.price-grid{grid-template-columns:1fr}}
+  .price-card{
+    background:var(--paper);border:1px solid rgba(67,80,48,.14);border-radius:30px;
+    padding:44px 40px;position:relative;transition:transform .3s,box-shadow .3s;
+    display:flex;flex-direction:column;
+  }
+  .price-card:hover{transform:translateY(-5px);box-shadow:var(--shadow)}
+  .price-card.featured{
+    background:
+      radial-gradient(80% 100% at 90% 0%,rgba(150,162,115,.3) 0%,transparent 55%),
+      linear-gradient(160deg,var(--olive-950),var(--olive-800));
+    color:var(--paper);box-shadow:var(--shadow);border:none;
+  }
+  .price-card .tag{
+    position:absolute;top:24px;right:24px;font-size:.68rem;font-weight:700;
+    letter-spacing:.14em;text-transform:uppercase;padding:6px 14px;border-radius:100px;
+    background:var(--olive-100);color:var(--olive-800);
+  }
+  .price-card.featured .tag{background:rgba(250,248,238,.15);color:var(--olive-200)}
+  .price-card h3{font-size:1.6rem;margin-bottom:8px;color:var(--olive-950)}
+  .price-card.featured h3{color:var(--paper)}
+  .price-card .desc{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:1.05rem;color:var(--ink-soft)}
+  .price-card.featured .desc{color:var(--olive-200)}
+  .price-card .amount{font-family:'Cormorant Garamond',serif;font-size:3rem;line-height:1;margin:24px 0 4px}
+  .price-card .per{font-size:.84rem;opacity:.65;margin-bottom:8px}
+  .price-card ul{list-style:none;margin:18px 0 32px;flex:1}
+  .price-card li{font-size:.92rem;padding:8px 0 8px 24px;position:relative;color:var(--ink-soft);font-weight:300}
+  .price-card.featured li{color:rgba(250,248,238,.85)}
+  .price-card li::before{content:"—";position:absolute;left:0;top:8px;color:var(--olive-400)}
+  .btn-dark{background:var(--olive-950);color:var(--paper);text-align:center}
+  .btn-dark:hover{transform:translateY(-2px);box-shadow:var(--shadow)}
+  .price-card .btn{width:100%}
+
+  /* ---------- контакты ---------- */
+  .contact{
+    text-align:center;border-radius:36px;padding:80px 30px;
+    background:
+      linear-gradient(180deg,rgba(41,49,32,.55) 0%,rgba(41,49,32,.4) 45%,rgba(41,49,32,.7) 100%),
+      url("assets/bg/meadow.jpg") center 70%/cover no-repeat,
+      linear-gradient(160deg,var(--olive-800),var(--olive-600));
+    box-shadow:var(--shadow);
+  }
+  .contact .sec-label{color:var(--olive-200)}
+  .contact h2{margin-bottom:16px;color:var(--paper);text-shadow:0 2px 20px rgba(41,49,32,.5)}
+  .contact h2 em{color:var(--olive-200)}
+  .contact p{max-width:460px;margin:0 auto 38px;color:rgba(250,248,238,.9);font-weight:300;text-shadow:0 1px 14px rgba(41,49,32,.5)}
+  .socials{display:flex;gap:16px;justify-content:center;flex-wrap:wrap}
+  .social{
+    display:flex;align-items:center;gap:12px;text-decoration:none;
+    padding:16px 32px;border-radius:100px;font-weight:600;font-size:.94rem;
+    transition:transform .3s,box-shadow .3s;
+  }
+  .social:hover{transform:translateY(-3px);box-shadow:0 16px 36px -14px rgba(47,55,36,.45)}
+  .social.tg{background:var(--paper);color:var(--olive-950)}
+  .social.tt{background:rgba(37,44,29,.85);color:var(--paper);border:1px solid rgba(250,248,238,.25)}
+  .social svg{width:20px;height:20px;fill:currentColor}
+
+  footer{padding:44px 0 54px;text-align:center;font-size:.8rem;color:var(--ink-soft);font-weight:300}
+</style>
+</head>
+<body>
+<div class="bg" aria-hidden="true"></div>
+
+<nav>
+  <div class="nav-inner">
+    <a class="logo" href="#top">Дарья <em>Астанкова</em></a>
+    <ul class="nav-links">
+      <li><a href="#about">Обо мне</a></li>
+      <li><a href="#themes">С чем я работаю</a></li>
+      <li><a href="#education">Образование</a></li>
+      <li><a href="#services">Консультации</a></li>
+    </ul>
+    <a class="nav-cta" href="#contact">Записаться</a>
+  </div>
+</nav>
+
+<header id="top" class="hero wrap">
+  <div class="hero-panel">
+    <span class="hero-pill">Психоаналитический подход · онлайн</span>
+    <h1>Пространство, где можно<br><em>услышать себя</em></h1>
+    <p class="hero-sub">Помогаю исследовать внутренний мир, понять причины
+    повторяющихся сценариев и вернуть себе опору.</p>
+    <a class="btn btn-light" href="#contact">Записаться на консультацию</a>
+    <a class="btn btn-outline" href="#about">Узнать больше</a>
+  </div>
+</header>
+
+<section id="about" class="wrap">
+  <div class="about reveal">
+    <div class="portrait">
+      <img src="assets/photo.jpg" alt="Фотография Дарьи Астанковой" onerror="this.remove()">
+      <div class="placeholder">
+        <span class="mono">ДА</span>
+        <small>Здесь появится фотография — файл assets/photo.jpg</small>
+      </div>
+    </div>
+    <div class="about-plate">
+      <div class="sec-label">Обо мне</div>
+      <h2>Меня зовут Дарья, <br>я — <em>психолог</em></h2>
+      <p>Консультирую онлайн в <strong>психоаналитическом подходе</strong> — направлении,
+      которое смотрит не только на симптом, но и на его истоки: ранний опыт,
+      бессознательные конфликты, повторяющиеся паттерны отношений.</p>
+      <p>Быть человеком — значит быть в чём-то чувствительным, ограниченным, нуждающимся,
+      зависимым, слабым, а иногда — растерянным или даже глупым. И я убеждена: чтобы жить
+      свободнее, важно уметь <strong>принимать эту часть человечности</strong> — в себе и
+      в других. Мы все нуждаемся в этом принятии.</p>
+      <p>Именно для этого нужна терапия — пространство, где можно проживать, плакать,
+      смеяться, ненавидеть и наслаждаться — <strong>быть самим собой</strong>.</p>
+      <p>Если вы чувствуете, что готовы посмотреть на свою жизнь и свои отношения глубже —
+      я здесь, чтобы пройти этот путь вместе с вами.</p>
+    </div>
+  </div>
+</section>
+
+<section id="themes" class="wrap">
+  <div class="reveal">
+    <div class="sec-head">
+      <div class="sec-label">С чем я работаю</div>
+      <h2>Темы, с которыми <em>ко мне приходят</em></h2>
+    </div>
+    <div class="themes">
+      <div class="theme-row"><span class="num">01</span><p>Тревога и внутреннее напряжение, которое сложно объяснить</p></div>
+      <div class="theme-row"><span class="num">02</span><p>Повторяющиеся сценарии в отношениях и жизни</p></div>
+      <div class="theme-row"><span class="num">03</span><p>Ощущение пустоты, потеря смысла и интереса</p></div>
+      <div class="theme-row"><span class="num">04</span><p>Сложности в отношениях — с партнёром, родителями, собой</p></div>
+      <div class="theme-row"><span class="num">05</span><p>Сниженное настроение, апатия, эмоциональное выгорание</p></div>
+      <div class="theme-row"><span class="num">06</span><p>Самокритика и ощущение «со мной что-то не так»</p></div>
+      <div class="theme-row"><span class="num">07</span><p>Проживание утраты, расставания, жизненных перемен</p></div>
+      <div class="theme-row"><span class="num">08</span><p>Тревожные сны и желание понять их язык</p></div>
+    </div>
+    <p class="themes-note">Если вашей темы нет в списке — напишите мне, обсудим, чем я могу помочь.</p>
+  </div>
+</section>
+
+<section class="wrap">
+  <div class="interactive reveal">
+    <div class="sec-label">Пауза для себя</div>
+    <h2>Вопрос <em>к себе</em></h2>
+    <p class="lead">Психоанализ начинается с любопытства к собственной внутренней жизни.
+    Вытяните вопрос — и позвольте себе минуту честного размышления.</p>
+    <div class="q-card"><p id="question">Нажмите на кнопку, чтобы вытянуть вопрос ✦</p></div>
+    <button class="btn btn-light" id="drawBtn" type="button">Вытянуть вопрос</button>
+    <small>Это не тест и не диагностика — просто повод встретиться с собой.</small>
+  </div>
+</section>
+
+<section id="education" class="wrap">
+  <div class="reveal">
+    <div class="sec-head">
+      <div class="sec-label">Образование</div>
+      <h2>Моё <em>образование</em></h2>
+    </div>
+    <div class="timeline">
+      <div class="tl-item">
+        <span class="year">2022 — 2026</span>
+        <h3>КФУ им. В.И. Вернадского</h3>
+        <p>Направление «Психология», профиль «Психолог в социальной сфере», очная форма</p>
+      </div>
+      <div class="tl-item">
+        <span class="year">2025</span>
+        <h3>Современное толкование сновидений</h3>
+        <p>Московский институт психоанализа</p>
+      </div>
+      <div class="tl-item">
+        <span class="year">2026</span>
+        <h3>Психоаналитическая диагностика</h3>
+        <p>Курс Нэнси Мак-Вильямс, PhD · IAPP · 16 ак. часов</p>
+      </div>
+      <div class="tl-item">
+        <span class="year">2026</span>
+        <h3>Психодинамическая практика</h3>
+        <p>«От первой сессии до завершения терапии» · Юлия Овчинникова, PhD · IAPP · 13 ак. часов</p>
+      </div>
+    </div>
+    <div class="edu-grid">
+      <a class="edu-card" href="Documents/diplom.pdf" target="_blank" rel="noopener">
+        <div class="thumb"><img src="assets/diplom.jpg" alt="Диплом о высшем психологическом образовании" loading="lazy"></div>
+        <div class="meta">
+          <h3>Диплом</h3>
+          <p>КФУ им. В.И. Вернадского · Психология</p>
+          <span class="open">Открыть документ →</span>
+        </div>
+      </a>
+      <a class="edu-card" href="Documents/sertifikat-1.pdf" target="_blank" rel="noopener">
+        <div class="thumb"><img src="assets/cert1.jpg" alt="Сертификат — Психоаналитическая диагностика, Нэнси Мак-Вильямс" loading="lazy"></div>
+        <div class="meta">
+          <h3>Психоаналитическая диагностика</h3>
+          <p>Курс Нэнси Мак-Вильямс, PhD · IAPP</p>
+          <span class="open">Открыть документ →</span>
+        </div>
+      </a>
+      <a class="edu-card" href="Documents/sertifikat-2.pdf" target="_blank" rel="noopener">
+        <div class="thumb"><img src="assets/cert2.jpg" alt="Сертификат — Психодинамическая терапевтическая практика" loading="lazy"></div>
+        <div class="meta">
+          <h3>Психодинамическая практика</h3>
+          <p>Юлия Овчинникова, PhD · IAPP</p>
+          <span class="open">Открыть документ →</span>
+        </div>
+      </a>
+      <a class="edu-card" href="Documents/tolkovanie-snovideniy.pdf" target="_blank" rel="noopener">
+        <div class="thumb"><img src="assets/cert3.jpg" alt="Сертификат — Современное толкование сновидений" loading="lazy"></div>
+        <div class="meta">
+          <h3>Толкование сновидений</h3>
+          <p>Московский институт психоанализа</p>
+          <span class="open">Открыть документ →</span>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<section id="services" class="wrap">
+  <div class="reveal">
+    <div class="sec-head">
+      <div class="sec-label">Консультации</div>
+      <h2>Форматы <em>работы</em></h2>
+    </div>
+    <div class="price-grid">
+      <div class="price-card">
+        <span class="tag">Знакомство</span>
+        <h3>Первичная консультация</h3>
+        <p class="desc">Первый шаг — познакомиться и понять запрос</p>
+        <div class="amount">2 500 ₽</div>
+        <div class="per">50 минут · онлайн</div>
+        <ul>
+          <li>Знакомство и обсуждение вашего запроса</li>
+          <li>Первичное прояснение трудностей</li>
+          <li>Договорённость о формате дальнейшей работы</li>
+        </ul>
+        <a class="btn btn-dark" href="#contact">Записаться</a>
+      </div>
+      <div class="price-card featured">
+        <span class="tag">Основной формат</span>
+        <h3>Долгосрочное консультирование</h3>
+        <p class="desc">Глубокая регулярная работа в психоаналитическом подходе</p>
+        <div class="amount">3 000 ₽</div>
+        <div class="per">60 минут · онлайн</div>
+        <ul>
+          <li>Регулярные встречи в устойчивом ритме</li>
+          <li>Исследование глубинных причин трудностей</li>
+          <li>Постепенные и устойчивые изменения</li>
+        </ul>
+        <a class="btn btn-light" href="#contact">Записаться</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="contact" class="wrap">
+  <div class="contact reveal">
+    <div class="sec-label">Контакты</div>
+    <h2>Запись <em>на консультацию</em></h2>
+    <p>Напишите мне в Telegram — расскажу о свободных окнах и отвечу на вопросы.
+    А в TikTok я делюсь заметками о психологии.</p>
+    <div class="socials">
+      <a class="social tg" href="https://t.me/psychologist_dar" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24"><path d="M9.78 18.65l.28-4.23 7.68-6.92c.34-.31-.07-.46-.52-.19L7.74 13.3 3.64 12c-.88-.25-.89-.86.2-1.3l15.97-6.16c.73-.33 1.43.18 1.15 1.3l-2.72 12.81c-.19.91-.74 1.13-1.5.71l-4.14-3.05-1.99 1.93c-.23.23-.42.41-.83.41z"/></svg>
+        Telegram
+      </a>
+      <a class="social tt" href="https://www.tiktok.com/@dar.psy" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1-.1z"/></svg>
+        TikTok
+      </a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  © <span id="year"></span> Дарья Астанкова · Психологическое консультирование онлайн<br>
+  Консультации не заменяют медицинскую или психиатрическую помощь.
+</footer>
+
+<script>
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  const revealEls = Array.from(document.querySelectorAll('.reveal'));
+  function checkReveal(){
+    revealEls.forEach(el => {
+      if (el.classList.contains('on')) return;
+      const r = el.getBoundingClientRect();
+      if (r.top < innerHeight * .92 && r.bottom > 0) el.classList.add('on');
+    });
+  }
+  window.addEventListener('scroll', checkReveal, {passive:true});
+  window.addEventListener('resize', checkReveal);
+  window.addEventListener('load', checkReveal);
+  checkReveal();
+
+  const questions = [
+    'Какое чувство я чаще всего стараюсь не замечать — и что оно пытается мне сказать?',
+    'В каких отношениях я повторяю один и тот же сценарий? Когда он появился впервые?',
+    'Чего я по-настоящему хочу — если на минуту отложить «надо» и «положено»?',
+    'На кого из родителей я похожа больше, чем мне хотелось бы признавать?',
+    'О чём я молчу даже с самыми близкими людьми?',
+    'Какая моя детская мечта до сих пор отзывается во мне?',
+    'Что я чувствую, когда остаюсь наедине с собой — покой или тревогу?',
+    'За что я до сих пор не простил(а) себя?',
+    'Какую часть себя я прячу от других — и чего боюсь, показывая её?',
+    'Мой последний запомнившийся сон — о чём он мог быть на самом деле?',
+    'Чьи ожидания я до сих пор стараюсь оправдать?',
+    'Если бы мой внутренний критик замолчал на день — что бы я сделал(а)?'
+  ];
+  const qEl = document.getElementById('question');
+  let last = -1;
+  document.getElementById('drawBtn').addEventListener('click', () => {
+    let i;
+    do { i = Math.floor(Math.random() * questions.length); } while (i === last);
+    last = i;
+    qEl.style.opacity = 0;
+    setTimeout(() => { qEl.textContent = questions[i]; qEl.style.opacity = 1; }, 320);
+  });
+</script>
+</body>
+</html>
